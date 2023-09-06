@@ -1,0 +1,25 @@
+version: "3.9"
+
+volumes:
+  app-db:
+    name: app-db
+
+services:
+  item-app:
+    container_name: item-app
+    image: ghcr.io/agungbesti/item-app:v1
+    restart: on-failure
+    depends_on:
+      - item-db
+    ports:
+      - "80:8080"
+  item-db:
+    container_name: item-db
+    image: mongo:3
+    ports:
+      - "27017:27017"
+    restart: on-failure
+    volumes:
+      - type: volume
+        source: app-db
+        target: "/data/db"
