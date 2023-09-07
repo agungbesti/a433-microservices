@@ -5,7 +5,7 @@ docker build -t item-app:v1 .
 docker images
 
 # Mengubah nama image agar sesuai dengan format Docker Hub
-docker tag item-app:v1 agungbesti/item-app:v1
+docker tag item-app:v1 ghcr.io/agungbesti/item-app:v1
 
 # login ke github packages dengan password yang telah tersimpan di env
 echo $PASSWORD_GITHUB_REGISTRY | docker login -u agungbesti --password-stdin
